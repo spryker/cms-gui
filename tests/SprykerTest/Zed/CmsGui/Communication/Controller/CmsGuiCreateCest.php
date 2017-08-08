@@ -5,9 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\CmsGui\Presentation;
+namespace SprykerTest\Zed\CmsGui\Communication\Controller;
 
-use SprykerTest\Zed\CmsGui\CmsGuiPresentationTester;
+use SprykerTest\Zed\CmsGui\CmsGuiCommunicationTester;
 use SprykerTest\Zed\CmsGui\PageObject\CmsGuiCreatePage;
 
 /**
@@ -15,7 +15,8 @@ use SprykerTest\Zed\CmsGui\PageObject\CmsGuiCreatePage;
  * @group SprykerTest
  * @group Zed
  * @group CmsGui
- * @group Presentation
+ * @group Communication
+ * @group Controller
  * @group CmsGuiCreateCest
  * Add your own group annotations below this line
  */
@@ -23,11 +24,11 @@ class CmsGuiCreateCest
 {
 
     /**
-     * @param \SprykerTest\Zed\CmsGui\CmsGuiPresentationTester $i
+     * @param \SprykerTest\Zed\CmsGui\CmsGuiCommunicationTester $i
      *
      * @return void
      */
-    public function breadcrumbIsVisible(CmsGuiPresentationTester $i)
+    public function breadcrumbIsVisible(CmsGuiCommunicationTester $i)
     {
         $i->amOnPage(CmsGuiCreatePage::URL);
         $i->seeBreadcrumbNavigation('Dashboard / Content Management / Pages / Create new CMS Page');
