@@ -25,16 +25,16 @@ class UniqueUrlValidator extends ConstraintValidator
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer|mixed $value The value that should be validated
+     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer|mixed $cmsPageAttributesTransfer The value that should be validated
      * @param \Symfony\Component\Validator\Constraint $constraint The constraint for the validation
      *
      * @throws \Symfony\Component\Validator\Exception\UnexpectedTypeException
      *
      * @return void
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($cmsPageAttributesTransfer, Constraint $constraint)
     {
-        if (!$value->getUrl()) {
+        if (!$cmsPageAttributesTransfer->getUrl()) {
             return;
         }
 
@@ -42,7 +42,7 @@ class UniqueUrlValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, UniqueUrl::class);
         }
 
-        $submittedUrlTransfer = $this->buildUrlTransfer($value, $constraint);
+        $submittedUrlTransfer = $this->buildUrlTransfer($cmsPageAttributesTransfer, $constraint);
         $existingUrlTransfer = $constraint->getUrlFacade()->findUrlCaseInsensitive($submittedUrlTransfer);
 
         if ($existingUrlTransfer === null || $existingUrlTransfer->getFkResourcePage() === null && $existingUrlTransfer->getFkResourceRedirect() !== null) {

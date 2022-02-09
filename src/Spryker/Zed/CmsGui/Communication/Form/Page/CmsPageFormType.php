@@ -280,7 +280,6 @@ class CmsPageFormType extends AbstractType
     {
         return new Callback([
             'callback' => function ($dateTimeFrom, ExecutionContextInterface $context) {
-                /** @var \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer */
                 $cmsPageTransfer = $context->getRoot()->getData();
                 if (!$dateTimeFrom) {
                     if ($cmsPageTransfer->getValidTo()) {
@@ -308,8 +307,8 @@ class CmsPageFormType extends AbstractType
     {
         return new Callback([
             'callback' => function ($dateTimeTo, ExecutionContextInterface $context) {
-                /** @var \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer */
                 $cmsPageTransfer = $context->getRoot()->getData();
+
                 if (!$dateTimeTo) {
                     if ($cmsPageTransfer->getValidFrom()) {
                         $context->addViolation('This field should be selected if "Valid from" is filled.');
