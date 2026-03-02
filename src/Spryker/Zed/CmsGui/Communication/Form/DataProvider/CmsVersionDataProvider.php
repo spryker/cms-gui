@@ -25,9 +25,6 @@ class CmsVersionDataProvider
      */
     protected $cmsFacade;
 
-    /**
-     * @param \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToCmsInterface $cmsFacade
-     */
     public function __construct(CmsGuiToCmsInterface $cmsFacade)
     {
         $this->cmsFacade = $cmsFacade;

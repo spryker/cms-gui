@@ -32,9 +32,6 @@ class CmsGuiToLocaleBridge implements CmsGuiToLocaleInterface
         return $this->localeFacade->getLocaleCollection();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer
     {
         return $this->localeFacade->getCurrentLocale();

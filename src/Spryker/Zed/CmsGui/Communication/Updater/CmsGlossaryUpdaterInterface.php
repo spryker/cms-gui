@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\CmsGlossaryTransfer;
 
 interface CmsGlossaryUpdaterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function updateAfterFind(CmsGlossaryTransfer $cmsGlossaryTransfer): CmsGlossaryTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function updateBeforeSave(CmsGlossaryTransfer $cmsGlossaryTransfer): CmsGlossaryTransfer;
 }

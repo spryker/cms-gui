@@ -331,11 +331,6 @@ class CmsPageTable extends AbstractTable
         );
     }
 
-    /**
-     * @param array $item
-     *
-     * @return string
-     */
     protected function createEditButtonGroup(array $item): string
     {
         $cmsGlossaryTransfer = $this->cmsFacade
@@ -603,11 +598,6 @@ class CmsPageTable extends AbstractTable
         return $item[CmsPageTableConstants::COL_CMS_VERSION_COUNT] > 1;
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return string
-     */
     protected function getStoreNames(int $idCmsPage): string
     {
         $cmsPageTransfer = $this->cmsFacade->findCmsPageById($idCmsPage);
@@ -619,11 +609,6 @@ class CmsPageTable extends AbstractTable
         return $this->formatStoreNames($cmsPageTransfer->getStoreRelationOrFail());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer|null $storeRelationTransfer
-     *
-     * @return string
-     */
     protected function formatStoreNames(?StoreRelationTransfer $storeRelationTransfer): string
     {
         if (!$storeRelationTransfer) {

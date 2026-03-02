@@ -63,11 +63,6 @@ class ViewPageController extends AbstractController
         ];
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return bool
-     */
     protected function isPageTemplateWithPlaceholders(int $idCmsPage): bool
     {
         $cmsGlossaryTransfer = $this->getFactory()->getCmsFacade()->findPageGlossaryAttributes($idCmsPage);

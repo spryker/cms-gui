@@ -58,12 +58,6 @@ class UniqueUrlValidator extends ConstraintValidator
             ->addViolation();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributesTransfer
-     * @param \Spryker\Zed\CmsGui\Communication\Form\Constraint\UniqueUrl $uniqueUrlConstraint
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function buildUrlTransfer(CmsPageAttributesTransfer $cmsPageAttributesTransfer, UniqueUrl $uniqueUrlConstraint): UrlTransfer
     {
         $url = $uniqueUrlConstraint->getCmsFacade()->buildPageUrl($cmsPageAttributesTransfer);

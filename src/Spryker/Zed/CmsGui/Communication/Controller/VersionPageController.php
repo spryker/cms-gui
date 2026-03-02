@@ -215,11 +215,6 @@ class VersionPageController extends AbstractController
         return $cmsVersionDataHelper->mapToCmsVersionDataTransfer($cmsTargetVersionTransfer);
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return bool
-     */
     protected function isPageTemplateWithPlaceholders(int $idCmsPage): bool
     {
         $cmsGlossaryTransfer = $this->getFactory()->getCmsFacade()->findPageGlossaryAttributes($idCmsPage);

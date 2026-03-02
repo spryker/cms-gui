@@ -40,11 +40,6 @@ class CmsVersionFormType extends AbstractType
         $this->addVersionNameField($builder, $options[static::OPTION_VERSION_NAME_CHOICES]);
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_VERSION_NAME_CHOICES);

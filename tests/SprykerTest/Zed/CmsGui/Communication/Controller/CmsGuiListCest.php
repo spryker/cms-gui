@@ -23,11 +23,6 @@ use SprykerTest\Zed\CmsGui\PageObject\CmsGuiListPage;
  */
 class CmsGuiListCest
 {
-    /**
-     * @param \SprykerTest\Zed\CmsGui\CmsGuiCommunicationTester $i
-     *
-     * @return void
-     */
     public function breadcrumbIsVisible(CmsGuiCommunicationTester $i): void
     {
         $i->amOnPage(CmsGuiListPage::URL);

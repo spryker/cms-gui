@@ -24,21 +24,12 @@ class CmsVersionMapper implements CmsVersionMapperInterface
      */
     protected $utilEncoding;
 
-    /**
-     * @param \Spryker\Zed\CmsGui\Dependency\QueryContainer\CmsGuiToCmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\CmsGui\Dependency\Service\CmsGuiToUtilEncodingInterface $utilEncoding
-     */
     public function __construct(CmsGuiToCmsQueryContainerInterface $cmsQueryContainer, CmsGuiToUtilEncodingInterface $utilEncoding)
     {
         $this->cmsQueryContainer = $cmsQueryContainer;
         $this->utilEncoding = $utilEncoding;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionTransfer $cmsVersionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function mapToCmsVersionDataTransfer(CmsVersionTransfer $cmsVersionTransfer): CmsVersionDataTransfer
     {
         $cmsVersionData = $this->utilEncoding->decodeJson($cmsVersionTransfer->getData(), true);
@@ -48,11 +39,6 @@ class CmsVersionMapper implements CmsVersionMapperInterface
         return $cmsVersionDataTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsVersionDataTransfer $cmsVersionDataTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsVersionDataTransfer
-     */
     public function mapCmsPageTransferWithUrl(CmsVersionDataTransfer $cmsVersionDataTransfer): CmsVersionDataTransfer
     {
         foreach ($cmsVersionDataTransfer->getCmsPage()->getPageAttributes() as $cmsPageAttributesTransfer) {

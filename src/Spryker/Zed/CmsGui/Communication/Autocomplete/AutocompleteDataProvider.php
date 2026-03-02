@@ -21,9 +21,6 @@ class AutocompleteDataProvider implements AutocompleteDataProviderInterface
      */
     protected $cmsQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\CmsGui\Dependency\QueryContainer\CmsGuiToCmsQueryContainerInterface $cmsQueryContainer
-     */
     public function __construct(CmsGuiToCmsQueryContainerInterface $cmsQueryContainer)
     {
         $this->cmsQueryContainer = $cmsQueryContainer;

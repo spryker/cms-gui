@@ -16,8 +16,5 @@ interface CmsGuiToLocaleInterface
      */
     public function getLocaleCollection(): array;
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer;
 }

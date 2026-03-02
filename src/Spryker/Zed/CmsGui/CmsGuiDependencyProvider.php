@@ -154,11 +154,6 @@ class CmsGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCmsPagePropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_CMS_PAGE, $container->factory(function () {
@@ -168,11 +163,6 @@ class CmsGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCmsPageLocalizedAttributesPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_CMS_PAGE_LOCALIZED_ATTRIBUTES, $container->factory(function () {
@@ -238,11 +228,6 @@ class CmsGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStoreRelationFormTypePlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_STORE_RELATION_FORM_TYPE, function () {
@@ -269,11 +254,6 @@ class CmsGuiDependencyProvider extends AbstractBundleDependencyProvider
         );
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCmsGlossaryAfterFindPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CMS_GLOSSARY_AFTER_FIND, function () {
@@ -291,11 +271,6 @@ class CmsGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCmsGlossaryBeforeSavePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CMS_GLOSSARY_BEFORE_SAVE, function () {

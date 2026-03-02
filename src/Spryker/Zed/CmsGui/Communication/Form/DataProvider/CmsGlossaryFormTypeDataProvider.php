@@ -51,10 +51,6 @@ class CmsGlossaryFormTypeDataProvider
      */
     protected $cmsGlossaryUpdater;
 
-    /**
-     * @param \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToCmsInterface $cmsFacade
-     * @param \Spryker\Zed\CmsGui\Communication\Updater\CmsGlossaryUpdaterInterface $cmsGlossaryUpdater
-     */
     public function __construct(CmsGuiToCmsInterface $cmsFacade, CmsGlossaryUpdaterInterface $cmsGlossaryUpdater)
     {
         $this->cmsFacade = $cmsFacade;

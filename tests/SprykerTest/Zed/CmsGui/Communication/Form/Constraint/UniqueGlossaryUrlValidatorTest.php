@@ -35,9 +35,6 @@ use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
  */
 class UniqueGlossaryUrlValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testValidateWhenSameUrlEditedShouldNotRegisterError(): void
     {
         $uniqueUrlConstraint = $this->createUniqueUrlConstraint();
@@ -60,9 +57,6 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         $this->validateCmsAttributeTransfer($executionContextMock, $cmsPageAttributeTransfer, $uniqueUrlConstraint);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateWhenRedirectUrlUsedShouldNotRegisterError(): void
     {
         $uniqueUrlConstraint = $this->createUniqueUrlConstraint();
@@ -92,9 +86,6 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         $cmsFacade->updatePage($cmsPageTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateWhenExistingUrlUsedShouldRegisterError(): void
     {
         $uniqueUrlConstraint = $this->createUniqueUrlConstraint();
@@ -146,25 +137,16 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         return $constraintViolationBuilderMock;
     }
 
-    /**
-     * @return \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToCmsInterface
-     */
     protected function createCmsFacade(): CmsGuiToCmsInterface
     {
         return new CmsGuiToCmsBridge(new CmsFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToUrlInterface
-     */
     protected function createUrlFacade(): CmsGuiToUrlInterface
     {
         return new CmsGuiToUrlBridge(new UrlFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CmsGui\Communication\Form\Constraint\UniqueUrl
-     */
     protected function createUniqueUrlConstraint(): UniqueUrl
     {
         $uniqueUrlConstraint = new UniqueUrl([
@@ -175,9 +157,6 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         return $uniqueUrlConstraint;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CmsPageAttributesTransfer
-     */
     protected function createCmsAttributeTransfer(): CmsPageAttributesTransfer
     {
         $cmsPageAttributeTransfer = new CmsPageAttributesTransfer();
@@ -190,9 +169,6 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         return $cmsPageAttributeTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CmsPageTransfer
-     */
     protected function createCmsPageTransfer(): CmsPageTransfer
     {
         $cmsPageTransfer = new CmsPageTransfer();
@@ -205,13 +181,6 @@ class UniqueGlossaryUrlValidatorTest extends Unit
         return $cmsPageTransfer;
     }
 
-    /**
-     * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $executionContextMock
-     * @param \Generated\Shared\Transfer\CmsPageAttributesTransfer $cmsPageAttributeTransfer
-     * @param \Spryker\Zed\CmsGui\Communication\Form\Constraint\UniqueUrl $uniqueUrlConstraint
-     *
-     * @return void
-     */
     protected function validateCmsAttributeTransfer(
         ExecutionContextInterface $executionContextMock,
         CmsPageAttributesTransfer $cmsPageAttributeTransfer,

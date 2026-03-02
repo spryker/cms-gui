@@ -128,9 +128,6 @@ class CreatePageController extends AbstractController
         return new FormError("Selected template doesn't exist anymore");
     }
 
-    /**
-     * @return string
-     */
     protected function getCmsFolderPath(): string
     {
         return $this->getFactory()

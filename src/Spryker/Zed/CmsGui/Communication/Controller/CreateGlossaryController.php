@@ -112,12 +112,6 @@ class CreateGlossaryController extends AbstractController
         return $viewActionButtons;
     }
 
-    /**
-     * @param int $idCmsPage
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     protected function getGlossaryForm(int $idCmsPage, Request $request): FormInterface
     {
         $cmsGlossaryFormDataProvider = $this->getFactory()
@@ -128,12 +122,6 @@ class CreateGlossaryController extends AbstractController
             ->handleRequest($request);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     * @param int $idCmsPage
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function saveFormData(CmsGlossaryTransfer $cmsGlossaryTransfer, int $idCmsPage): RedirectResponse
     {
         $cmsGlossaryTransfer = $this->getFactory()

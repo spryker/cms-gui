@@ -122,11 +122,6 @@ class EditPageController extends AbstractController
         ];
     }
 
-    /**
-     * @param int $idCmsPage
-     *
-     * @return bool
-     */
     protected function isPageTemplateWithPlaceholders(int $idCmsPage): bool
     {
         $cmsGlossaryTransfer = $this->getFactory()->getCmsFacade()->findPageGlossaryAttributes($idCmsPage);
@@ -244,9 +239,6 @@ class EditPageController extends AbstractController
         return new FormError(static::MESSAGE_TEMPLATE_SELECT_ERROR);
     }
 
-    /**
-     * @return string
-     */
     protected function getCmsFolderPath(): string
     {
         return $this->getFactory()

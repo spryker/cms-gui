@@ -34,11 +34,6 @@ class CmsPageFormTypeDataProvider
      */
     protected $localFacade;
 
-    /**
-     * @param \Spryker\Zed\CmsGui\Dependency\QueryContainer\CmsGuiToCmsQueryContainerInterface $cmsQueryContainer
-     * @param \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToCmsInterface $cmsFacade
-     * @param \Spryker\Zed\CmsGui\Dependency\Facade\CmsGuiToLocaleInterface $localFacade
-     */
     public function __construct(
         CmsGuiToCmsQueryContainerInterface $cmsQueryContainer,
         CmsGuiToCmsInterface $cmsFacade,
