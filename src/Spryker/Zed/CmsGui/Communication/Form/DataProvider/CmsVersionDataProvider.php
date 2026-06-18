@@ -8,6 +8,8 @@
 namespace Spryker\Zed\CmsGui\Communication\Form\DataProvider;
 
 use DateTime;
+use Generated\Shared\Transfer\CmsVersionConditionsTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\CmsVersionTransfer;
 use Spryker\Zed\CmsGui\Communication\Exception\CmsPageNotFoundException;
 use Spryker\Zed\CmsGui\Communication\Form\Version\CmsVersionFormType;
@@ -80,7 +82,13 @@ class CmsVersionDataProvider
             return [];
         }
 
-        $cmsVersionTransfers = $this->cmsFacade->findAllCmsVersionByIdCmsPage($idCmsPage);
+        $cmsVersionCriteriaTransfer = (new CmsVersionCriteriaTransfer())
+            ->setCmsVersionConditions(
+                (new CmsVersionConditionsTransfer())
+                    ->setIdCmsPage($idCmsPage)
+                    ->setIsContentLoaded(false),
+            );
+        $cmsVersionTransfers = $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer)->getCmsVersions()->getArrayCopy();
         array_shift($cmsVersionTransfers);
 
         $versionList = [];

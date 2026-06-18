@@ -10,6 +10,8 @@ namespace Spryker\Zed\CmsGui\Dependency\Facade;
 use Generated\Shared\Transfer\CmsGlossaryTransfer;
 use Generated\Shared\Transfer\CmsPageAttributesTransfer;
 use Generated\Shared\Transfer\CmsPageTransfer;
+use Generated\Shared\Transfer\CmsVersionCollectionTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\CmsVersionDataTransfer;
 use Generated\Shared\Transfer\CmsVersionTransfer;
 
@@ -106,6 +108,11 @@ class CmsGuiToCmsBridge implements CmsGuiToCmsInterface
     public function findAllCmsVersionByIdCmsPage(int $idCmsPage): array
     {
         return $this->cmsFacade->findAllCmsVersionByIdCmsPage($idCmsPage);
+    }
+
+    public function getCmsVersionCollection(CmsVersionCriteriaTransfer $cmsVersionCriteriaTransfer): CmsVersionCollectionTransfer
+    {
+        return $this->cmsFacade->getCmsVersionCollection($cmsVersionCriteriaTransfer);
     }
 
     public function findCmsVersionByIdCmsPageAndVersion(int $idCmsPage, int $version): ?CmsVersionTransfer

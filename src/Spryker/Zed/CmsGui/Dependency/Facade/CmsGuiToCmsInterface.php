@@ -10,6 +10,8 @@ namespace Spryker\Zed\CmsGui\Dependency\Facade;
 use Generated\Shared\Transfer\CmsGlossaryTransfer;
 use Generated\Shared\Transfer\CmsPageAttributesTransfer;
 use Generated\Shared\Transfer\CmsPageTransfer;
+use Generated\Shared\Transfer\CmsVersionCollectionTransfer;
+use Generated\Shared\Transfer\CmsVersionCriteriaTransfer;
 use Generated\Shared\Transfer\CmsVersionDataTransfer;
 use Generated\Shared\Transfer\CmsVersionTransfer;
 
@@ -56,6 +58,8 @@ interface CmsGuiToCmsInterface
      * @return array<\Generated\Shared\Transfer\CmsVersionTransfer>
      */
     public function findAllCmsVersionByIdCmsPage(int $idCmsPage): array;
+
+    public function getCmsVersionCollection(CmsVersionCriteriaTransfer $cmsVersionCriteriaTransfer): CmsVersionCollectionTransfer;
 
     public function findCmsVersionByIdCmsPageAndVersion(int $idCmsPage, int $version): ?CmsVersionTransfer;
 
