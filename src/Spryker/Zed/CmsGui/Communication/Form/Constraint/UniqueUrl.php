@@ -47,10 +47,7 @@ class UniqueUrl extends SymfonyConstraint
         return $this->cmsFacade;
     }
 
-    /**
-     * @return string
-     */
-    public function getTargets()
+    public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;
     }

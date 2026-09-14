@@ -279,8 +279,8 @@ class CmsPageFormType extends AbstractType
      */
     protected function createValidFromRangeConstraint()
     {
-        return new Callback([
-            'callback' => function ($dateTimeFrom, ExecutionContextInterface $context) {
+        return new Callback(
+            callback: function ($dateTimeFrom, ExecutionContextInterface $context) {
                 /** @var \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer */
                 $cmsPageTransfer = $context->getRoot()->getData();
                 if (!$dateTimeFrom) {
@@ -299,7 +299,7 @@ class CmsPageFormType extends AbstractType
                     $context->addViolation('Date "Valid from" is the same as "Valid to".');
                 }
             },
-        ]);
+        );
     }
 
     /**
@@ -307,8 +307,8 @@ class CmsPageFormType extends AbstractType
      */
     protected function createValidToFieldRangeConstraint()
     {
-        return new Callback([
-            'callback' => function ($dateTimeTo, ExecutionContextInterface $context) {
+        return new Callback(
+            callback: function ($dateTimeTo, ExecutionContextInterface $context) {
                 /** @var \Generated\Shared\Transfer\CmsPageTransfer $cmsPageTransfer */
                 $cmsPageTransfer = $context->getRoot()->getData();
                 if (!$dateTimeTo) {
@@ -323,7 +323,7 @@ class CmsPageFormType extends AbstractType
                     $context->addViolation('Date "Valid to" cannot be earlier than "Valid from".');
                 }
             },
-        ]);
+        );
     }
 
     /**
@@ -343,6 +343,9 @@ class CmsPageFormType extends AbstractType
         );
     }
 
+    /**
+     * @phpstan-return class-string<\Symfony\Component\Form\FormTypeInterface>
+     */
     protected function getValidityFieldType(): string
     {
         if ($this->isGuiDatePickerTypeAvailable()) {
