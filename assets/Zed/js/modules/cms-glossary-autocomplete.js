@@ -5,7 +5,7 @@
 
 'use strict';
 
-var summernote = require('ZedGuiEditorConfiguration');
+require('ZedGuiEditorConfiguration');
 
 const GLOSSARY_SELECT_MARGIN_WIDTH = 25;
 
@@ -79,7 +79,7 @@ CmsGlossaryAutocomplete.prototype.handleAjaxResponse = function (response) {
 
     self.keyList.on('keydown', function (e) {
         var key = e.keyCode;
-        if (key == 13 || key == 9) {
+        if (key === 13 || key === 9) {
             self.keyList.blur();
             return false;
         }
@@ -101,7 +101,7 @@ CmsGlossaryAutocomplete.prototype.setSelectedTranslationValueFromResponse = func
         var translationElements = self.placeholderTranslationContainer.find("textarea[id$='translation']");
         $.each(translationElements, function (translationElementIndex, translationElement) {
             var translationIdLocale = $(translationElement).parent().parent().find("input[id$='fkLocale']").val();
-            if (translationIdLocale == idLocale) {
+            if (String(translationIdLocale) === String(idLocale)) {
                 $(translationElement).summernote('reset');
                 $(translationElement).summernote('pasteHTML', translation.value);
             }
@@ -113,9 +113,9 @@ CmsGlossaryAutocomplete.prototype.buildAutocompleteUrl = function (searchType, v
     var searchTypeGlossaryKey = 2;
     var searchTypeFullText = 3;
 
-    if (searchType == searchTypeGlossaryKey) {
+    if (searchType === searchTypeGlossaryKey) {
         return this.autocompleteUrl.formatString('key', value);
-    } else if (searchType == searchTypeFullText) {
+    } else if (searchType === searchTypeFullText) {
         return this.autocompleteUrl.formatString('value', value);
     }
 };
@@ -135,24 +135,24 @@ CmsGlossaryAutocomplete.prototype.addKeySearchEvent = function (autocompleteElem
     autocompleteElement.on('input', function () {
         if ($(this).val().length > 3) {
             delay(function () {
-                if (self.xhr && self.xhr.readystate != 4) {
+                if (self.xhr && self.xhr.readystate !== 4) {
                     self.xhr.abort();
                 }
-                if (searchOption.val() == 2 || searchOption.val() == 3) {
+                if (Number(searchOption.val()) === 2 || Number(searchOption.val()) === 3) {
                     self.showAutoComplete(self.placeholderTranslationContainer, searchOption.val());
                 }
             }, 500);
         }
     });
 
-    if (searchOption.val() == 0 && autocompleteElement.val() == '') {
+    if (Number(searchOption.val()) === 0 && autocompleteElement.val() === '') {
         autocompleteElement.attr('readonly', 'readonly');
     } else {
         searchOption.val(1);
     }
 
     searchOption.on('change', function () {
-        if (this.value == 0) {
+        if (Number(this.value) === 0) {
             autocompleteElement.attr('readonly', 'readonly');
         } else {
             autocompleteElement.removeAttr('readonly');
@@ -162,7 +162,7 @@ CmsGlossaryAutocomplete.prototype.addKeySearchEvent = function (autocompleteElem
     autocompleteElement.on('keyup', function (e) {
         var key = e.keyCode;
 
-        if (key == 40) {
+        if (key === 40) {
             self.keyList.first().focus();
             self.keyList.val(0).change();
         }
