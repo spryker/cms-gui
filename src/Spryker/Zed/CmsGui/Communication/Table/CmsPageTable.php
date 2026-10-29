@@ -456,7 +456,7 @@ class CmsPageTable extends AbstractTable
     protected function getActiveStatusLabel($item)
     {
         if (!$item[CmsPageTableConstants::COL_IS_ACTIVE]) {
-            return $this->generateLabel('Inactive', 'label-danger');
+            return $this->generateLabel('Inactive', 'badge-outline-dark');
         }
 
         return $this->generateLabel('Active', 'label-primary');
