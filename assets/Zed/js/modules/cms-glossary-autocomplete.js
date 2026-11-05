@@ -5,8 +5,6 @@
 
 'use strict';
 
-require('ZedGuiEditorConfiguration');
-
 const GLOSSARY_SELECT_MARGIN_WIDTH = 25;
 
 function CmsGlossaryAutocomplete(options) {
@@ -101,10 +99,18 @@ CmsGlossaryAutocomplete.prototype.setSelectedTranslationValueFromResponse = func
         var translationElements = self.placeholderTranslationContainer.find("textarea[id$='translation']");
         $.each(translationElements, function (translationElementIndex, translationElement) {
             var translationIdLocale = $(translationElement).parent().parent().find("input[id$='fkLocale']").val();
-            if (String(translationIdLocale) === String(idLocale)) {
-                $(translationElement).summernote('reset');
-                $(translationElement).summernote('pasteHTML', translation.value);
+            if (String(translationIdLocale) !== String(idLocale)) {
+                return;
             }
+
+            var richTextEditor = window.SprykerRichTextEditor;
+
+            if (richTextEditor && richTextEditor.writeHtml(translationElement, translation.value)) {
+                return;
+            }
+
+            $(translationElement).summernote('reset');
+            $(translationElement).summernote('pasteHTML', translation.value);
         });
     });
 };

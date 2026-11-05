@@ -8,6 +8,7 @@
 namespace Spryker\Zed\CmsGui\Communication\Form\Glossary;
 
 use Generated\Shared\Transfer\CmsPlaceholderTranslationTransfer;
+use Spryker\Zed\Gui\Communication\Form\Type\RichTextEditorType;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,6 +35,10 @@ class CmsGlossaryTranslationFormType extends AbstractType
      * @var string
      */
     public const FIELD_LOCALE_NAME = 'localeName';
+
+    protected const string LEGACY_HTML_EDITOR_CLASS = 'html-editor';
+
+    protected const string EDITOR_CONFIG_CMS = 'cms';
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -87,12 +92,8 @@ class CmsGlossaryTranslationFormType extends AbstractType
      */
     protected function addTranslationField(FormBuilderInterface $builder)
     {
-        $builder->add(static::FIELD_TRANSLATION, TextareaType::class, [
+        $builder->add(static::FIELD_TRANSLATION, $this->getTranslationFieldType(), $this->getTranslationFieldOptions([
             'label' => 'Content',
-            'attr' => [
-                'class' => 'html-editor',
-                'data-editor-config' => 'cms',
-            ],
             'required' => false,
             'constraints' => [
                 $this->getFactory()->createTwigContentConstraint(),
@@ -100,8 +101,46 @@ class CmsGlossaryTranslationFormType extends AbstractType
             'sanitize_xss' => true,
             'allowed_attributes' => ['style'],
             'allowed_html_tags' => ['iframe'],
-        ]);
+        ]));
 
         return $this;
+    }
+
+    /**
+     * @phpstan-return class-string<\Symfony\Component\Form\FormTypeInterface>
+     */
+    protected function getTranslationFieldType(): string
+    {
+        if ($this->isGuiRichTextEditorTypeAvailable()) {
+            return RichTextEditorType::class;
+        }
+
+        return TextareaType::class;
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     *
+     * @return array<string, mixed>
+     */
+    protected function getTranslationFieldOptions(array $options): array
+    {
+        if ($this->isGuiRichTextEditorTypeAvailable()) {
+            return $options + [
+                'editor_config' => static::EDITOR_CONFIG_CMS,
+            ];
+        }
+
+        return $options + [
+            'attr' => [
+                'class' => static::LEGACY_HTML_EDITOR_CLASS,
+                'data-editor-config' => static::EDITOR_CONFIG_CMS,
+            ],
+        ];
+    }
+
+    protected function isGuiRichTextEditorTypeAvailable(): bool
+    {
+        return class_exists(RichTextEditorType::class);
     }
 }
